@@ -4,11 +4,7 @@ function die(msg) {
 }
 
 function debug_log(msg) {
-	let textNode = document.createTextNode(msg);
-	let node = document.createElement("p").appendChild(textNode);
-
-	document.body.appendChild(node);
-	document.body.appendChild(document.createElement("br"));
+	document.getElementById("msgs").innerHTML = msg;
 }
 
 // The following functions are taken from https://github.com/saelo/jscpwn/:
