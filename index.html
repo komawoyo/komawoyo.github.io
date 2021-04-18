@@ -27,6 +27,10 @@ function preloadScripts(lst)
     }    
 }
 
+function debug_log(msg) {
+    document.getElementById("msgs").innerHTML = msg;
+}
+
 function toggle_payload(pld){
     if(pld == "ps4-vtx"){
         debug_log("[+] " + pld);
