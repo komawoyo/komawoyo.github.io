@@ -1,0 +1,102 @@
+<html manifest="cache.manifest">
+<head>
+<title>Jailbreak 7.55</title>
+<link rel="stylesheet" href="index.css">
+</head>
+<body onload="go()">
+<script>
+    function label(tip) {document.getElementById("msgs").innerHTML = tip;}
+    if(window.applicationCache.status==2){localStorage.isCached=true;}
+    window.applicationCache.onprogress=function(e){Percent=(Math.round(e.loaded / e.total * 100));document.title="Installing offline cache: " + Percent + "%";localStorage.isCached=false;};
+    window.applicationCache.oncached=function(){setTimeout(function(){document.title="Done!";localStorage.isCached=true;},1000);setTimeout(function(){window.location.href = document.referrer;},2000);};
+</script>
+<script>
+function print(){}
+
+var scriptCode = '';
+
+function preloadScripts(lst)
+{
+    scriptCode = '';
+    for(var i = 0; i < lst.length; i++)
+    {
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', lst[i], false);
+        xhr.send('');
+        scriptCode += xhr.responseText + '\n';
+    }    
+}
+
+function toggle_payload(pld){
+    if(pld == "ps4-vtx"){
+        debug_log("[+] " + pld);
+        preloadScripts(['loader.js', pld + '.js', 'netcat.js']);
+    } else if(pld == "webrte"){
+        debug_log("[+] " + pld);
+        preloadScripts(['loader.js', pld + '.js', 'netcat.js']);
+    } else if(pld == "ps4debug"){
+        debug_log("[+] " + pld);
+        preloadScripts(['loader.js', pld + '.js', 'netcat.js']);
+    } else if(pld == "netcat"){
+        debug_log("[+] " + pld);
+        preloadScripts(['loader.js', 'netcat.js']);
+    }
+    if(window.postPayload)
+        window.postPayload();
+}
+
+function done()
+{
+    if(main_ret == 0 || main_ret == 179)
+    {
+        alert("You're all set!");
+        // read_ptr_at(0);
+        document.body.style.cssText = 'color:black';
+        document.getElementById('load').innerHTML=''+
+        '<tr>'+
+        // '<button onMouseOut="label(\'&lt;&lt;&gt;&gt;\')" onmouseover="label(\'Jailbreak\')"        onclick="toggle_payload(\'ps4-vtx\')"><img src="hen.png"><\/button>'+
+        '<button onMouseOut="label(\'&lt;&lt;&gt;&gt;\')" onmouseover="label(\'WebRTE\')"           onclick="toggle_payload(\'webrte\')"><img src="webrte.png"><\/button>'+
+        '<button onMouseOut="label(\'&lt;&lt;&gt;&gt;\')" onmouseover="label(\'ps4debug\')"         onclick="toggle_payload(\'ps4debug\')"><img src="ps4debug.png"><\/button>'+
+        '<button onMouseOut="label(\'&lt;&lt;&gt;&gt;\')" onmouseover="label(\'Netcat port 9020\')" onclick="toggle_payload(\'netcat\')"><img src="netcat.png"><\/button>'+
+        '<\/tr>';
+    }
+    else
+        alert("Jailbreak failed! Reboot your PS4 and try again.");
+}
+
+window.midExploit = function()
+{
+    var scripts = ['blob.js', 'jb.js', 'loader.js', 'ps4-vtx.js', 'netcat.js'];
+    preloadScripts(scripts);
+}
+
+window.postExploit = function()
+{
+    setTimeout(function() //update the screen one last time...
+    {
+        eval.call(window, scriptCode);
+        done();
+    }, 100);
+};
+
+window.postPayload = function()
+{
+    setTimeout(function()
+    {
+        eval.call(window, scriptCode);
+    }, 100);
+};
+</script>
+<script src="utils.js"></script>
+<script src="int64.js"></script>
+<script src="ps4.js"></script>
+<h1 id="msgs" style="text-align:center;font-size:40px;color:white;text-shadow: 4px 4px 4px #326cb3;">&lt;&lt;&gt;&gt;</h1>
+<table id="load" align="center" style="margin-top:0px;"></table>
+<button style="height:0px;width:1px" id="input1" onfocus="handle2()"></button>
+<button style="height:0px;width:1px" id="input2"></button>
+<button style="height:0px;width:1px" id="input3" onfocus="handle2()"></button>
+<select id="select1">
+<option value="value1">Value1</option>
+</select>
+</body>
+</html>

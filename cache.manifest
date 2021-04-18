@@ -1,0 +1,21 @@
+CACHE MANIFEST
+CACHE:
+/blob.js
+/ps4.js
+/utils.js
+/int64.js
+/netcat.js
+/jb.js
+/loader.js
+/ps4debug.js
+/webrte.js
+/ps4-vtx.js
+/index.html
+/index.css
+/ps4debug.png
+/webrte.png
+/hen.png
+/netcat.png
+
+NETWORK:
+*
