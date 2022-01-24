@@ -1,0 +1,82 @@
+<html manifest="cache.manifest" >
+
+<head>
+    <title>PS4 9.00 FW  Exploit </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            background-color: #242629;
+        }
+
+        .loader {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin: -75px 0 0 -75px;
+
+            border: 10px solid #1f1e1e;
+            border-radius: 50%;
+            border-top: 10px solid #044595;
+            border-left: 10px solid #044595;
+            width: 120px;
+            height: 120px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .info {
+            overflow: hidden;
+            position: fixed;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+
+            font-size: 45px;
+            font-family: sans-serif;
+            color: #b8b8b8;
+
+            transform: translate(-50%, -50%);
+        }
+    </style>
+    <script>
+		if(window.applicationCache.status==2){localStorage.isCached=true;}
+		window.applicationCache.onprogress=function(e){Percent=(Math.round(e.loaded / e.total * 100));document.title="Installing offline cache: " + Percent + "%";localStorage.isCached=false;};
+		window.applicationCache.oncached=function(){setTimeout(function(){document.title="Done!";localStorage.isCached=true;},1000);setTimeout(function(){window.location.href = document.referrer;},3000);};
+	
+        function allset() {
+			document.getElementById("title").style.display = "none";
+            document.getElementById("loader").style.display = "none";
+            document.getElementById("allset").style.display = "block";
+        }
+
+        function awaitpl() {
+            document.getElementById("loader").style.display = "none";
+            document.getElementById("awaiting").style.display = "block";
+        }
+    </script>
+    <script src="the-payload.js"></script>
+    <script src="int64.js"></script>
+    <script src="rop.js"></script>
+    <script src="kexploit.js"></script>
+    <script src="webkit.js"></script>
+</head>
+<body onload="setTimeout(poc, 1500);" style='font-size:40px;text-align:center;text-shadow: 4px 4px 4px black;color:white;'>
+	<div id="title"><br/>
+    Loading Exploit...<br/>
+    This may take a minute to run<br/><br/>
+    Note: If you get "There is not enough free system memory,"<br/>
+    Click OK and Try Again.</div>
+    <div id="loader" class="loader"></div>
+    <div id="awaiting" class="info" style="display:none;">Injecting Payload...</div>
+    <div id="allset" class="info" style="display:none;">All Done! <br/>⚠️ Remove USB Drive Now. ⚠️</div>
+</body>
+</html>

@@ -1,0 +1,11 @@
+CACHE MANIFEST
+CACHE:
+/int64.js
+/kexploit.js
+/rop.js
+/the-payload.js
+/webkit.js
+/index.html
+
+NETWORK:
+*
