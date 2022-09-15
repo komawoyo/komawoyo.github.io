@@ -48,12 +48,12 @@
         }
     </style>
     <script>
-		if(window.applicationCache.status==2){localStorage.isCached=true;}
-		window.applicationCache.onprogress=function(e){Percent=(Math.round(e.loaded / e.total * 100));document.title="Installing offline cache: " + Percent + "%";localStorage.isCached=false;};
-		window.applicationCache.oncached=function(){setTimeout(function(){document.title="Done!";localStorage.isCached=true;},1000);setTimeout(function(){window.location.href = document.referrer;},3000);};
-	
+        if(window.applicationCache.status==2){localStorage.isCached=true;}
+        window.applicationCache.onprogress=function(e){Percent=(Math.round(e.loaded / e.total * 100));document.title="Installing offline cache: " + Percent + "%";localStorage.isCached=false;};
+        window.applicationCache.oncached=function(){setTimeout(function(){document.title="Done!";localStorage.isCached=true;},1000);setTimeout(function(){window.location.href = document.referrer;},3000);};
+    
         function allset() {
-			document.getElementById("title").style.display = "none";
+            document.getElementById("title").style.display = "none";
             document.getElementById("loader").style.display = "none";
             document.getElementById("allset").style.display = "block";
         }
@@ -70,7 +70,7 @@
     <script src="webkit.js"></script>
 </head>
 <body onload="setTimeout(poc, 1500);" style='font-size:40px;text-align:center;text-shadow: 4px 4px 4px black;color:white;'>
-	<div id="title"><br/>
+    <div id="title"><br/>
     Loading Exploit...<br/>
     This may take a minute to run<br/><br/>
     Note: If you get "There is not enough free system memory,"<br/>
